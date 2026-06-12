@@ -51,6 +51,9 @@ class Router
 
     public function startRouter(): void
     {
+
+        Header('Access-Control-Allow-Origin: *');
+        Header('content-type: application/json; charset=utf-8');
         foreach ($this->routes as $route) {
 
             if ($route->routeEquals($this->url) && $route->method == $this->method) {

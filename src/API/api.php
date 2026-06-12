@@ -1,14 +1,19 @@
 <?php
 
 include "Router.php";
-include __DIR__ . "/../Service/MunicipioService.php";
+include __DIR__ . "/../Service/ComunicadoService.php";
 
 use src\API\Router;
-use src\Service\MunicipioService;
+use src\Service\ComunicadoService;
+use src\Service\UnidadeDeConservacaoService;
 
 $router = new Router();
 
-$router->get('/municipio/{id}', MunicipioService::class, 'getMunicipio');
-$router->get('/municipio', MunicipioService::class, 'getMunicipios');
+$router->get('/comunicado/{id}', ComunicadoService::class, 'getComunicado');
+$router->get('/comunicado', ComunicadoService::class, 'getComunicados');
+$router->post('/comunicado', ComunicadoService::class, 'createComunicado');
+
+$router->get('/unidade/{id}', UnidadeDeConservacaoService::class, 'getUnidadeDeConservacao');
+$router->get('/unidade', UnidadeDeConservacaoService::class, 'getUnidadesDeConservacao');
 
 $router->startRouter();

@@ -10,11 +10,11 @@ use MunicipioRepository;
 class MunicipioService
 {
 
-    public static function getMunicipio(array $urlParams): MunicipioEntity|array
+    public static function getMunicipio(array $urlParams = []): MunicipioEntity|array
     {
-        $repository = new MunicipioRepository();
-
         if (!empty($urlParams['id'])) {
+            $repository = new MunicipioRepository();
+
 
             $municipio = $repository->find((int)$urlParams['id']);
 

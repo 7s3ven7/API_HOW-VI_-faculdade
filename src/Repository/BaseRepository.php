@@ -5,6 +5,7 @@ abstract class baseRepository
 
     protected string $table;
     private bool $return;
+    public int $lastId;
     private PDO $connection;
 
     public function __construct()
@@ -87,7 +88,7 @@ abstract class baseRepository
         return false;
     }
 
-    private function execute(string $query, array $params = null): PDOStatement
+    protected function execute(string $query, array $params = null): PDOStatement
     {
         $statement = $this->connection->prepare($query);
 
@@ -96,6 +97,9 @@ abstract class baseRepository
         }
 
         $this->return = $statement->execute();
+
+        $this->lastId = $this->connection->lastInsertId();
+
         return $statement;
     }
 

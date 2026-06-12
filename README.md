@@ -1,3 +1,4 @@
+
 # Como criar uma nova rota
 
 1. Abra o arquivo api.php.
